@@ -458,24 +458,20 @@ h6 {
     display: block;
   }
 }
-/* Carrusel moderno con bordes redondeados y sombras */
+/* Carrusel minimalista moderno */
 :root {
-  --radius: 12px;
-  --gap: 16px;
-  --height: 400px;
-  --dot-size: 10px;
-  --dot-active-width: 28px;
-  --dot-color: rgba(255,255,255,0.7);
-  --dot-active-color: #fff;
-}
-
-* {
-  box-sizing: border-box;
+  --radius: 16px;
+  --gap: 12px;
+  --height: 380px;
+  --dot-size: 8px;
+  --dot-active-size: 20px;
+  --dot-color: rgba(0,0,0,0.3);
+  --dot-active-color: #333;
 }
 
 .carousel {
   max-width: 1000px;
-  margin: 30px auto;
+  margin: 40px auto;
   position: relative;
   font-family: 'Inter', sans-serif;
 }
@@ -483,24 +479,23 @@ h6 {
 .carousel__viewport {
   overflow: hidden;
   border-radius: var(--radius);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 .carousel__track {
   display: flex;
-  transition: transform 0.45s cubic-bezier(.22,.9,.32,1);
+  transition: transform 0.5s ease;
   gap: var(--gap);
   padding: var(--gap);
-  align-items: center;
 }
 
 .carousel__slide {
   flex: 0 0 100%;
-  position: relative;
-  height: var(--height);
   min-width: 100%;
+  height: var(--height);
   border-radius: var(--radius);
   overflow: hidden;
+  position: relative;
 }
 
 .carousel__img {
@@ -509,71 +504,83 @@ h6 {
   object-fit: cover;
   border-radius: var(--radius);
   display: block;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s ease, filter 0.6s ease;
+  filter: brightness(0.95);
 }
 
 .carousel__img:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
+  filter: brightness(1);
 }
 
 .carousel__caption {
   position: absolute;
   left: 20px;
   bottom: 20px;
-  background: rgba(0,0,0,0.45);
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 15px;
-  backdrop-filter: blur(3px);
+  background: rgba(255,255,255,0.85);
+  color: #111;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
+/* Botones estilo minimalista */
 .carousel__btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255,255,255,0.85);
-  border: none;
-  padding: 12px;
-  border-radius: 999px;
+  background: rgba(50,50,50,0.05);
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 10px;
+  border-radius: 50%;
   cursor: pointer;
   font-size: 18px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-  transition: transform 0.2s, background 0.2s;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .carousel__btn:hover {
-  background: rgba(255,255,255,1);
-  transform: translateY(-50%) scale(1.05);
+  background: rgba(50,50,50,0.12);
+  transform: translateY(-50%) scale(1.1);
 }
 
-.carousel__btn--prev { left: 14px; }
-.carousel__btn--next { right: 14px; }
+.carousel__btn--prev { left: 12px; }
+.carousel__btn--next { right: 12px; }
 
+/* Puntos minimalistas */
 .carousel__dots {
   display: flex;
-  gap: 8px;
+  justify-content: center;
+  gap: 6px;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   bottom: 12px;
+  width: 100%;
 }
 
 .carousel__dot {
   width: var(--dot-size);
   height: var(--dot-size);
-  border-radius: 50%;
   background: var(--dot-color);
+  border-radius: 50%;
   border: none;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 .carousel__dot[aria-current="true"] {
-  width: var(--dot-active-width);
+  width: var(--dot-active-size);
   border-radius: 999px;
   background: var(--dot-active-color);
 }
+
+/* Responsive */
+@media (max-width:900px) { :root { --height: 280px; } }
+@media (max-width:480px) { 
+  :root { --height: 200px; } 
+  .carousel__caption { font-size: 12px; padding: 6px 10px; }
+}
+
 
 @media (max-width:900px) { :root { --height: 300px; } }
 @media (max-width:480px) { 
