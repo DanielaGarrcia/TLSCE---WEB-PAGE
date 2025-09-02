@@ -460,6 +460,7 @@ h6 {
   }
 /* … aquí tus estilos anteriores … */
 
+}
 
 /* ==== Estilos para el carrusel de equipo ==== */
 *, *::after, *::before {
@@ -468,7 +469,7 @@ h6 {
   padding: 0;
 }
 
-body {
+/* body {
   background-color: rgb(241 245 249);
 }
 
@@ -480,7 +481,7 @@ main {
   justify-content: center;
   align-items: center;
   position: relative;
-}
+} */
 
 #carouselExampleCaptions {
   width: 80vw;
